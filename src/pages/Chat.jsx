@@ -18,6 +18,7 @@ import {
   ref,
   update,
 } from "firebase/database";
+import { BASEURL } from "../utils/baseurl";
 
 let intervalId = null;
 
@@ -61,7 +62,7 @@ export default function Chat() {
 
   useEffect(() => {
     if (!socket.current?.connected) {
-      socket.current = io("http://localhost:8080");
+      socket.current = io(BASEURL);
       socket.current.emit("add-user", currentUser?.uid);
       socket.current.on("msg-receive", (data) => {
         setContacts((contacts) =>
