@@ -1,1 +1,1 @@
-export const BASEURL = 'http://localhost:8080'
+export const BASEURL = 'https://p2pbackend-hgt2.onrender.com'
