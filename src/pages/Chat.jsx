@@ -39,11 +39,15 @@ export default function Chat() {
   });
 
   useEffect(() => {
-    setContacts(() =>
-      users?.map((activeUser) => ({ ...activeUser, count: 0 }))
-    );
     dispatch(fetchAllUsersStart());
   }, []);
+  useEffect(() => {
+    if (users.length > 0) {
+      setContacts(() =>
+        users?.map((activeUser) => ({ ...activeUser, count: 0 }))
+      );
+    }
+  }, [users]);
 
   useEffect(() => {
     if (intervalId) {
